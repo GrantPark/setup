@@ -5,19 +5,22 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="../localsite/img/logo/favicon.png" />
-<title>.NET Server Setup - Resource Diretory and Event Calendar</title>
-<link type="text/css" rel="stylesheet" href="https://neighborhood.org/localsite/css/base.css" />
-<script type="text/javascript" src="https://neighborhood.org/localsite/js/d3.v5.min.js"></script>
-<script type="text/javascript" src="https://neighborhood.org/localsite/js/jquery/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="https://neighborhood.org/localsite/js/localsite.js"></script>
-<script type="text/javascript" src="https://neighborhood.org/localsite/js/showdown.min.js"></script>
-<script type="text/javascript" src="https://neighborhood.org/localsite/js/navigation.js"></script>
+<link rel="icon" type="image/x-icon" href="../localsite/img/logo/partners/modelearth-icon.png" />
+<title>Partner Admin Tool - Resource Diretory and Event Calendar - Amazon AWS Windows Hosting Setup</title>
+<link type="text/css" rel="stylesheet" href="https://model.earth/localsite/css/base.css" />
+<script type="text/javascript" src="https://model.earth/localsite/js/d3.v5.min.js"></script>
+<script type="text/javascript" src="https://model.earth/localsite/js/jquery/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://model.earth/localsite/js/localsite.js?showheader=true"></script>
+<script type="text/javascript" src="https://model.earth/localsite/js/showdown.min.js"></script>
+
+
+<meta name="description" content="Steps for hosting partner admin tools, including configuration settings for IIS, .NET, SQL, Certs and Email.">
+<meta name="keywords" content="North American Association for Environmental Education">
 
 <script>
-if (location.host.indexOf('model.earth') < 0 && location.host.indexOf('localhost') < 0) {  	
-	param.titleArray = ["local","site"]
-	param.headerLogo = "<img src='https://neighborhood.org/localsite/img/logo/neighborhood-icon.png' style='width:34px; margin-right:2px'>";
+if (location.host.indexOf('grantp') >= 0 || location.host.indexOf('gpna') >= 0) {
+	param.titleArray = []	
+	param.headerLogo = "<img src='https://grantpark.org/grantpark/img/logo/gpna-rect.png' style='width:60px; margin-right:2px'>";
 }
 </script>
 
@@ -27,11 +30,13 @@ if (location.host.indexOf('model.earth') < 0 && location.host.indexOf('localhost
 		display:none;
 		margin-bottom:15px;
 	}
-	h2 {
-	    margin-top: 40px;
-	}
 	.markdownEye {
 		display: none;
+	}
+	@media (max-width:850px) {
+		#partnerLogos {
+			display: none;
+		}
 	}
 </style>
 </head>
@@ -40,13 +45,13 @@ if (location.host.indexOf('model.earth') < 0 && location.host.indexOf('localhost
 
 <div class="content contentpadding">
 
-	<div style='float:right; margin-left:40px; margin-right:40px'>
-	<b>Site Setup</b><br>
-	<a href="../localsite/start/">Localsite Starter</a><br>
-	<a href="#server">Server Setup</a><br>
-	<a href="#database">Database Setup</a><br>
-	<a href="#email">Email Setup</a><br>
-	<!--<a href="about/">About Web API</a><br>-->
+	<div id="partnerLogos" style='float:right; margin-left:50px; margin-right:40px'>
+	<br>
+	<a href="https://thegeep.org/"><img src="img/logo/geep.png" style="max-width:320px"></a><br><br>
+	<a href="http://southeastee.com/"><img src="img/logo/seea.png" style="max-width:250px;margin-top:10px;margin-bottom:2px"></a><br><br>
+	<a href="https://gadnr.org/"><img src="img/logo/ga-dnr.png" style="max-width:300px"></a><br><br>
+	<a href="https://www.georgia.org/center-of-innovation"><img src="img/logo/ga-coi.png" style="max-width:260px"></a><br><br>
+	
 	</div>
 
 	<div id="introDiv"></div>
@@ -55,11 +60,11 @@ if (location.host.indexOf('model.earth') < 0 && location.host.indexOf('localhost
 
 <script>
    // If the markdown file won't display in IIS, add an .md MIME type to the website with a value of "text/markdown; charset=UTF-8"
-   if (location.host.indexOf('model.earth') >= 0 || location.host.indexOf('localhost') >= 0) {
-   		loadMarkdown("ee.md", "introDiv", "_parent");
-	} else {
+   //if (location.host.indexOf('model.earth') >= 0 || location.host.indexOf('localhost') >= 0) {
+   //		loadMarkdown("ee.md", "introDiv", "_parent");
+	//} else {
 		loadMarkdown("intro.md", "introDiv", "_parent");
-	}
+	//}
    loadMarkdown("README.md", "readmeDiv", "_parent");
 </script>
 
